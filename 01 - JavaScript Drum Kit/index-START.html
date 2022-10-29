@@ -59,14 +59,26 @@
 
 <script>
   const playSound = (e) => {
+
+    // use event keycode to select matching audio file 
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"`)
+
+    // use event keycode to select key GUI elements
 
     const key = document.querySelector(`div[data-key="${e.keyCode}"]`)
 
+    // check that audio is truthy
     if (!audio) return;
     
+    // add class 'playing' for specificity
+    key.classList.add('playing')
 
-    // console.log(key, audio);
+    // prep audio to play from beginning
+    audio.currentTime = 0;
+
+    // play audio
+    audio.play()
+
   }
   
   window.addEventListener('keydown', playSound);
