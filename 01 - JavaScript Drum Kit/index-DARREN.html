@@ -81,6 +81,10 @@
 
   }
 
+  const clickPlay = (e) => {
+    console.log(e.target)
+  }
+
   const removeTransition = (e) => {
     if (e.propertyName !== 'transform') return;
     e.target.classList.remove('playing');
@@ -90,7 +94,13 @@
   const keys = Array.from(document.querySelectorAll('.key'));
 
   // add event listener to remove playing class after event transition end
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+  keys.forEach(key => {
+    key.addEventListener('transitionend', removeTransition)
+  })
+
+  keys.forEach(key => {
+    key.addEventListener('click', clickPlay)
+  })
 
   // add event listener to the window
   window.addEventListener('keydown', playSound);
