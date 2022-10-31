@@ -98,9 +98,10 @@
     key.addEventListener('transitionend', removeTransition)
   })
 
-  keys.forEach(key => {
-    key.addEventListener('click', clickPlay)
-  })
+  // add an onclick to each key that plays the sound
+  // keys.forEach(key => {  
+  //   key.addEventListener('click', clickPlay)
+  // })
 
   // add event listener to the window
   window.addEventListener('keydown', playSound);
