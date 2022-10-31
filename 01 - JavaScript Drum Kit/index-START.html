@@ -80,7 +80,19 @@
     audio.play()
 
   }
+
+  const removeTransition = (e) => {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+  }
   
+  // create an array of keys
+  const keys = Array.from(document.querySelectorAll('.key'));
+
+  // add event listener to remove playing class after event transition end
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+
+  // add event listener to the window
   window.addEventListener('keydown', playSound);
 </script>
 
