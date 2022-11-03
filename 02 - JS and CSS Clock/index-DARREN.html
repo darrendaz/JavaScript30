@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
   <title>JS + CSS Clock</title>
 </head>
 <body>
@@ -12,7 +11,7 @@
       
       <div class="clock-face">
         <div class="hand hour-hand"></div>
-        <div class="hand min-hand"></div>
+        <div class="hand minute-hand"></div>
         <div class="hand second-hand"></div>
       </div>
     </div>
@@ -47,7 +46,7 @@
       width: 30rem;
       height: 30rem;
       border: 20px solid white;
-      border-radius: 20%;
+      border-radius: 100%;
       margin: 50px auto;
       position: relative;
       padding: 2rem;
@@ -66,33 +65,60 @@
     }
 
     .hand {
-      width: 55%;
-      height: 8px;
       border-radius: 5px;
-      background: rgb(255, 255, 255);
+      /* background: rgb(255, 255, 255); */
       box-shadow: 0 0 0 4px rgb(0 0 0 / 10%), inset 0 0 0 2px #efefef, inset 0 0 4px black, 0 0 1px rgb(0 0 0 / 20%);
       position: absolute;
       top: 50%;
       transform-origin: 100%;
       transform: rotate(90deg);
-      transition: all .05s;
+      transition: all .06s;
       transition-timing-function: cubic-bezier(0, 3.3, 0.58, 1);
       right: 50%;
     }
+    
+    .second-hand {
+      width: 50%;
+      height: 6px;
+      background-color: red;
+      box-shadow: 0 0 0 4px rgb(0 0 0 / 10%);
+    }
 
+    .minute-hand {
+      width: 55%;
+      height: 12px;
+      background-color: white;
+      box-shadow: 0 0 0 4px rgb(0 0 0 / 10%);
+    }
+    
+    .hour-hand {
+      width: 35%;
+      height: 12px;
+      background-color: white;
+      box-shadow: 0 0 0 4px rgb(0 0 0 / 10%);
+    }
   </style>
 
   <script>
     const secondHand = document.querySelector('.second-hand')
+    const minuteHand = document.querySelector('.minute-hand')
+    const hourHand = document.querySelector('.hour-hand')
 
     function setDate() {
       const now = new Date();
       const seconds = now.getSeconds();
-      const rotateDegrees = Math.round(((seconds/60) * 360) - 90)
-      secondHand.style.transform = `rotate(${rotateDegrees}deg)`
-      
+      const minutes = now.getMinutes();
+      const hours = now.getHours();
 
-      console.log(rotateDegrees);
+      const secondsDegrees = ((seconds / 60) * 360) + 90
+      const minutesDegrees = ((minutes / 60) * 360) + 90
+      const hoursDegrees = (((hours % 12) / 12) * 360) + 90
+      
+      secondHand.style.transform = `rotate(${secondsDegrees}deg)`
+      minuteHand.style.transform = `rotate(${minutesDegrees}deg)`
+      hourHand.style.transform = `rotate(${hoursDegrees}deg)`
+
+      console.log(hours, minutes, seconds, secondsDegrees);
     }
 
     setInterval(setDate, 1000);
