@@ -20,10 +20,12 @@
             <label for="primary-light">Primary Color</label>
             <br />
             <input id="primary-light" type="color" name="primary-light" value="#64b38b">
+            <pre id="primary">#ffffff</pre>
             <br />
             <label for="secondary-light">Secondary Color</label>
             <br />
             <input id="secondary-light" type="color" name="secondary-light" value="#ffffff">
+            <pre id="secondary">#ffffff</pre>
           </div>
       </div>
 
@@ -188,7 +190,7 @@
       }
 
       label {
-        color: var(--secondary-light)
+        color: var(--accent-light)
       }
 
       .controls {
@@ -200,7 +202,13 @@
         font-weight: 900;
       }
 
-
+      pre {
+        background-color: rgb(1, 1, 1, .4);
+        border-radius: 20px;
+        padding: 12px;
+        text-align: center;
+        width: 140px;
+      }
     </style>
 
     <script>
@@ -208,7 +216,19 @@
 
         function handleUpdate() {
           const units = this.dataset.units || '';
-          document.documentElement.style.setProperty(`--${this.name}`, this.value + units)  
+          document.documentElement.style.setProperty(`--${this.name}`, this.value + units)
+          // const val = document.getElementById('primary-light').value
+          if (this.id == 'primary-light'){
+            const hexField = document.getElementById('primary')
+            hexField.innerHTML = `${this.value}`
+            hexField.style.setProperty('color', this.value)
+          }
+
+          if (this.id == 'secondary-light'){
+            const hexField = document.getElementById('secondary')
+            hexField.innerHTML = `${this.value}`
+            hexField.style.setProperty('color', this.value)
+          }
         }
 
         inputs.forEach(input => input.addEventListener('change', handleUpdate))
