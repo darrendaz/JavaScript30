@@ -1,202 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Scoped CSS Variables and JS</title>
-</head>
-<body>
-  <div class="horizontal-flex-container">
-    <div class="vertical-flex-container">
-    <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+  <head>
+    <meta charset="UTF-8">
+    <title>Scoped CSS Variables and JS</title>
+  </head>
+  <body>
+    <div class="horizontal-flex-container">
+      <div class="vertical-flex-container">
+        <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+          <div class="controls">
+            <label for="spacing">Spacing:</label>
+            <br />
+            <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-units="px">
+            <br />
+            <label for="blur">Blur:</label>
+            <br />
+            <input id="blur" type="range" name="blur" min="0" max="25" value="0" data-units="px">
+            <br />
+            <label for="primary-light">Primary Color</label>
+            <br />
+            <input id="primary-light" type="color" name="primary-light" value="#64b38b">
+            <br />
+            <label for="secondary-light">Secondary Color</label>
+            <br />
+            <input id="secondary-light" type="color" name="secondary-light" value="#ffffff">
+          </div>
+      </div>
 
-    <div class="controls">
-      <label for="spacing">Spacing:</label>
-      <br />
-      <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-units="px">
-      <br />
+      <img class="hero" src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
-      <label for="blur">Blur:</label>
-      <br />
-      <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-units="px">
-      <br />
-
-      <label for="primary-light">Primary Color (Light)</label>
-      <br />
-      <input id="primary-light" type="color" name="primary-light" value="#ffffff">
     </div>
-  </div>
 
-    <img class="hero" src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
-
-  </div>
-
-  <style>
-    :root {
-      /* LIGHT */
-      --primary-light: #fff;
-      --secondary-light: #aaa;
-      --accent-light: #ccc;
-      
-      /* DARK */
-      --primary-dark: #ccc;
-      --secondary-dark: #ccc;
-      --accent-dark: #ccc;
-
-      --spacing: 10px;
-      --blur: 10px;
-    }
-
-    .horizontal-flex-container {
-      display: flex;
-      flex-direction: row
-    }
-
-    .vertical-flex-container {
-      display: flex;
-      flex-direction: column;
-      margin: 20px;
-      padding: 10px;
-
-    }
-
-
-    input[type=range] {
-  -webkit-appearance: none;
-  margin: 18px 0;
-  width: 80px;
-  background: transparent;
-  border-radius: 20px;
-}
-input[type=range]:focus {
-  outline: none;
-}
-input[type=range]::-webkit-slider-runnable-track {
-  width: 100px;
-  height: 20px;
-  cursor: pointer;
-  background: var(--primary-light);
-  border-radius: 20px;
-  
-}
-input[type=range]::-webkit-slider-thumb {
-  border: 5px solid var(--secondary-light);
-  box-shadow: 0 0 3px var(--accent-light);
-  height: 24px;
-  width: 24px;
-  border-radius: 20px;
-  background: var(--primary-light);
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -2px;
-}
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: var(--primary-light);
-}
-input[type=range]::-moz-range-track {
-  width: 100px;
-  height: 20px;
-  cursor: pointer;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  /* background: var(--primary-light); */
-  border-radius: 20px;
-  border: 0.2px solid #010101;
-}
-input[type=range]::-moz-range-thumb {
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  border: 1px solid #000000;
-  height: 16px;
-  width: 16px;
-  border-radius: 20px;
-  /* background: var(--primary-light); */
-  cursor: pointer;
-}
-input[type=range]::-ms-track {
-  width: 100px;
-  height: 8.4px;
-  cursor: pointer;
-  /* background: transparent; */
-  border-color: transparent;
-  border-width: 16px 0;
-  color: transparent;
-}
-input[type=range]::-ms-fill-lower {
-  /* background: var(--primary-light); */
-  border: 0.2px solid #010101;
-  border-radius: 20px;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-}
-
-input[type=range]::-ms-fill-upper {
-  /* background: var(--primary-light); */
-  border: 0.2px solid #010101;
-  border-radius: 20px;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-}
-
-input[type=range]::-ms-thumb {
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  border: 1px solid #000000;
-  height: 36px;
-  width: 16px;
-  border-radius: 3px;
-  /* background: #ffffff; */
-  cursor: pointer;
-}
-
-input[type=range]:focus::-ms-fill-lower {
-  background: var(--primary-light);
-}
-
-input[type=range]:focus::-ms-fill-upper {
-  background: var(--primary-light);
-}
-
-    img {
-      padding: var(--spacing);
-      background: var(--primary-light);
-      filter: blur(var(--blur));
-      flex-grow: 3;
-    }
-
-    h1 {
-      color: var(--primary-light);
-    }
-    /*
-      misc styles, nothing to do with CSS variables
-    */
-
-    body {
-      text-align: left;
-      background: #193549;
-      color: var(--primary-light);
-      font-family: 'Space Mono', monospace;
-      font-weight: 100;
-      font-size: 24px;
-    }
-
-    .controls {
-      margin-bottom: 50px;
-    }
-
-    input {
-      width: 100px;
-    }
-    
-
-  </style>
-
-  <script>
-      const inputs = document.querySelectorAll('.controls input')
-
-      function handleUpdate() {
-        const units = this.dataset.units || '';
-        document.documentElement.style.setProperty(`--${this.name}`, this.value + units)
+    <style>
+      :root {
+        /* LIGHT */
+        --primary-light: #fff;
+        --secondary-light: #fff;
+        --accent-light: #ccc;
         
+        /* DARK */
+        --primary-dark: #ccc;
+        --secondary-dark: #ccc;
+        --accent-dark: #ccc;
+
+        --spacing: 10px;
+        --blur: 0px;
       }
 
-      inputs.forEach(input => input.addEventListener('change', handleUpdate))
+      .horizontal-flex-container {
+        display: flex;
+        flex-direction: row
+      }
 
-      inputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
-  </script>
-</body>
+      .vertical-flex-container {
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+        padding: 10px;
+
+      }
+
+      input[type=range] {
+        -webkit-appearance: none;
+        margin: 18px 0;
+        width: 140px;
+        background: transparent;
+        border-radius: 20px;
+      }
+
+      input[type=range]:focus {
+        outline: none;
+      }
+
+      input[type=range]::-webkit-slider-runnable-track {
+        width: 140px;
+        height: 5px;
+        cursor: pointer;
+        background: var(--secondary-light);
+        border-radius: 20px; 
+      }
+
+      input[type=range]::-webkit-slider-thumb {
+        border: 5px solid var(--primary-light);
+        box-shadow: 0 0 3px var(--accent-light);
+        height: 24px;
+        width: 24px;
+        border-radius: 20px;
+        background: var(--secondary-light);
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -10px;
+      }
+
+      input[type=range]:focus::-webkit-slider-runnable-track {
+        background: var(--secondary-light);
+      }
+
+      input[type=range]::-moz-range-track {
+        width: 100px;
+        height: 20px;
+        cursor: pointer;
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+        /* background: var(--primary-light); */
+        border-radius: 20px;
+        border: 0.2px solid #010101;
+      }
+
+      input[type=range]::-moz-range-thumb {
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+        border: 1px solid #000000;
+        height: 16px;
+        width: 16px;
+        border-radius: 20px;
+        /* background: var(--primary-light); */
+        cursor: pointer;
+      }
+
+      input[type=range]::-ms-track {
+        width: 100px;
+        height: 8.4px;
+        cursor: pointer;
+        /* background: transparent; */
+        border-color: transparent;
+        border-width: 16px 0;
+        color: transparent;
+      }
+
+      input[type=range]::-ms-fill-lower {
+        /* background: var(--primary-light); */
+        border: 0.2px solid #010101;
+        border-radius: 20px;
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+      }
+
+      input[type=range]::-ms-fill-upper {
+        /* background: var(--primary-light); */
+        border: 0.2px solid #010101;
+        border-radius: 20px;
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+      }
+
+      input[type=range]::-ms-thumb {
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+        border: 1px solid #000000;
+        height: 36px;
+        width: 16px;
+        border-radius: 3px;
+        /* background: #ffffff; */
+        cursor: pointer;
+      }
+
+      input[type=range]:focus::-ms-fill-lower {
+        background: var(--primary-light);
+      }
+
+      input[type=range]:focus::-ms-fill-upper {
+        background: var(--primary-light);
+      }
+
+      input#primary-light {
+        margin-top: 10px;
+      }
+
+      img {
+        padding: var(--spacing);
+        background: var(--primary-light);
+        filter: blur(var(--blur));
+        flex-grow: 3;
+      }
+
+      body {
+        text-align: left;
+        background: #193549;
+        color: var(--secondary-light);
+        font-family: 'Space Mono', monospace;
+        font-weight: 100;
+        font-size: 24px;
+      }
+
+      h2 {
+        font-weight: 300;
+        color: var(--accent-light)
+      }
+
+      input {
+        width: 100px;
+      }
+
+      label {
+        color: var(--secondary-light)
+      }
+
+      .controls {
+        margin-bottom: 50px;
+      }
+      
+      span.hl {
+        color: var(--primary-light);
+        font-weight: 900;
+      }
+
+
+    </style>
+
+    <script>
+        const inputs = document.querySelectorAll('.controls input')
+
+        function handleUpdate() {
+          const units = this.dataset.units || '';
+          document.documentElement.style.setProperty(`--${this.name}`, this.value + units)  
+        }
+
+        inputs.forEach(input => input.addEventListener('change', handleUpdate))
+
+        inputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
+    </script>
+  </body>
 </html>
