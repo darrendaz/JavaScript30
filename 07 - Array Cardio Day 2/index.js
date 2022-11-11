@@ -21,18 +21,30 @@ const currentDate = (new Date).getFullYear()
 const isSomeone19orOlder = people.some(person => {
     return currentDate - person.year >= 19
 })
-console.log(isSomeone19orOlder)
+console.log({isSomeone19orOlder})
 
 // Array.prototype.every() // is everyone 19 or older?
 const isEveryoneOlderThan19 = people.every(person => {
     return currentDate - person.year >= 19
 })
-console.log(isEveryoneOlderThan19)
+console.log({isEveryoneOlderThan19})
 
 // Array.prototype.find()
 // Find is like filter, but instead returns just the one you are looking for
 // find the comment with the ID of 823423
+const comment = comments.find(comment => comment.id == 823423);
+console.table({comment})
 
 // Array.prototype.findIndex()
 // Find the comment with this ID
 // delete the comment with the ID of 823423
+const commentIndex = comments.findIndex(comment => comment.id === 823423)
+
+// comments.splice(commentIndex, 1)
+const newComments = [
+    ...comments.slice(0, commentIndex),
+    ...comments.slice(commentIndex+1)
+]
+console.table({newComments})
+
+
