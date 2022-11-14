@@ -1,3 +1,14 @@
 * {
     font-family: 'Space Mono', monospace;
 }
+
+button {
+    padding: 16px 32px;
+    background-color: aqua;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 0 40px rgba(75, 229, 218, 0.75);
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+}
