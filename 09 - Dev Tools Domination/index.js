@@ -30,11 +30,11 @@ const p = document.querySelector('p')
 console.assert(p.classList.contains('ouch'), 'That is wrong')
 
 // clearing
-console.clear()
+// console.clear()
 
 // Viewing DOM Elements
 console.dir(p)
-console.clear()
+// console.clear()
 
 // Grouping together
 dogs.forEach(dog => {
