@@ -4,9 +4,9 @@ let lastChecked
 function handleCheck(e){
     let inBetween = false
 
-    if (e.shiftKey && this.checked) {
-        checkboxes.forEach((checkbox) => {
-            if (checkbox === this || checkbox === lastChecked){
+    if (e.shiftKey && this.checked){
+        checkboxes.forEach(checkbox =>{
+            if (checkbox === lastChecked || checkbox === this){
                 inBetween = !inBetween
             }
             if (inBetween){
@@ -14,10 +14,10 @@ function handleCheck(e){
             }
         })
     }
-    
+
     lastChecked = this
 }
 
-checkboxes.forEach((checkbox) => {
+checkboxes.forEach(checkbox => {
     checkbox.addEventListener('click', handleCheck)
 })
