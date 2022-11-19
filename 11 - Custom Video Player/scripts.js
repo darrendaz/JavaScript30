@@ -45,14 +45,14 @@ function handleRewind() {
 function handleFastforward() {
     console.log('fast forwarding')
     let forwardTime = this.dataset.skip
-    video.duration <= Math.abs(forwardTime + video.currentTime) ? 
+    video.duration > Math.abs(video.currentTime) + forwardTime ? 
         video.currentTime += parseFloat(forwardTime) : 
         video.currentTime = video.duration
     console.log(video.currentTime)
 }
 
 function handlePageLoad() {
-    video.currentTime = 30
+    video.currentTime = 0
 }
 
 function handleMouseDownProgress(e) {
