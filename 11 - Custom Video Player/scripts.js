@@ -1,38 +1,57 @@
-const video = document.querySelector(
-    '.player__controls player__video, .viewer')
-const playButton = document.querySelector(
-    '.player__controls .player__button, .toggle')
-const progress = document.querySelector(
-    '.player__controls .progress')
-const progressBar = document.querySelector(
-    '.player__controls .progress__filled')
-const volumeControls = document.querySelector(
-    '.player__controls input[name="volume"]');
-const playbackRateControls = document.querySelector(
-    '.player__controls input[name="playbackRate"]');
-const rewindButton = document.querySelector(
-    '.player__controls [data-skip="-10"]')
-const fastforwardButton = document.querySelector(
-    '.player__controls [data-skip="25"]')
+const video = document.querySelector('.player__controls player__video, .viewer')
+const playButton = document.querySelector('.player__controls .player__button, .toggle')
+const progress = document.querySelector('.player__controls .progress')
+const progressBar = document.querySelector('.player__controls .progress__filled')
+const playbackRateToggle = document.querySelector('.player__button.playback__rate');
+const playbackRateControls = document.querySelector('.player__controls input[name="playbackRate"]');
+const volumeControls = document.querySelector('.player__controls input[name="volume"]');
+const rewindButton = document.querySelector('.player__controls [data-skip="-10"]')
+const fastforwardButton = document.querySelector('.player__controls [data-skip="25"]')
 
 let mouseDown
 let originX = 0
 
 window.addEventListener('load', handlePageLoad);
+
 video.addEventListener('click', handleClickPlay);
 playButton.addEventListener('click', handleClickPlay);
 rewindButton.addEventListener('click', handleRewind);
 fastforwardButton.addEventListener('click', handleFastforward);
+volumeControls.addEventListener('input', handleChangeVolume)
+playbackRateControls.addEventListener('input', handleChangePlaybackRate)
+playbackRateToggle.addEventListener('click', handleClickPlaybackRateToggle)
+
 progress.addEventListener('mousedown', handleMouseDownProgress);
+
+
 // window.addEventListener('mousedown', handleMouseDown)
 // window.addEventListener('mouseup', handleMouseUp)
 // window.addEventListener('mousemove', handleMouseMove)
 
+function handleChangeVolume() {
+    video.volume = this.value
+}
+function handleChangePlaybackRate() {
+    playbackRateToggle.innerHTML = `${this.value}x`;
+    video.playbackRate = this.value;
+}
+
+function handleClickPlaybackRateToggle() {
+    if(video.playbackRate < parseFloat(playbackRateControls.max)){
+        video.playbackRate += parseFloat(playbackRateControls.step);
+        playbackRateToggle.innerHTML = `${video.playbackRate}x`;
+        
+    }
+
+    if(video.playbackRate === parseFloat(playbackRateControls.max)) {
+        video.playbackRate = parseFloat(playbackRateControls.min);
+    }
+    
+}
 
 function handleClickPlay() {
-    
     video.paused ? video.play() : video.pause()
-    video.paused ? playButton.innerHTML = '►' : playButton.innerHTML = '🁢 🁢' 
+    video.paused ? playButton.innerHTML = '►' : playButton.innerHTML = '🁢🁢' 
 }
 
 function handleRewind() {
@@ -43,12 +62,10 @@ function handleRewind() {
 }
 
 function handleFastforward() {
-    console.log('fast forwarding')
     let forwardTime = this.dataset.skip
     video.duration > Math.abs(video.currentTime) + forwardTime ? 
         video.currentTime += parseFloat(forwardTime) : 
         video.currentTime = video.duration
-    console.log(video.currentTime)
 }
 
 function handlePageLoad() {
