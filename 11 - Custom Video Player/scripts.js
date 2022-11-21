@@ -31,6 +31,7 @@ progress.addEventListener('mousedown', handleMouseDownProgress);
 function handleChangeVolume() {
     video.volume = this.value
 }
+
 function handleChangePlaybackRate() {
     playbackRateToggle.innerHTML = `${this.value}x`;
     video.playbackRate = this.value;
@@ -46,7 +47,6 @@ function handleClickPlaybackRateToggle() {
     if(video.playbackRate === parseFloat(playbackRateControls.max)) {
         video.playbackRate = parseFloat(playbackRateControls.min);
     }
-    
 }
 
 function handleClickPlay() {
@@ -83,13 +83,11 @@ function handleMouseDown(e) {
     // if (e.target === progressBar){
         
     // }
-
 }
 
 function handleMouseUp(e){
     mouseDown = false
     let change = e.offsetX - originX
-
 }
 
 function handleMouseMove(e) {
