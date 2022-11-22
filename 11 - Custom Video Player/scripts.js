@@ -14,6 +14,7 @@ let originX = 0
 window.addEventListener('load', handlePageLoad);
 
 video.addEventListener('click', handleClickPlay);
+video.addEventListener('timeupdate', updateDuration);
 playButton.addEventListener('click', handleClickPlay);
 rewindButton.addEventListener('click', handleRewind);
 fastforwardButton.addEventListener('click', handleFastforward);
@@ -28,6 +29,11 @@ progress.addEventListener('mousedown', handleMouseDownProgress);
 // window.addEventListener('mouseup', handleMouseUp)
 // window.addEventListener('mousemove', handleMouseMove)
 
+function updateDuration() {
+    let percentage = parseFloat(this.currentTime) / this.duration
+    console.log(percentage); 
+}
+
 function handleChangeVolume() {
     video.volume = this.value
 }
@@ -41,7 +47,7 @@ function handleClickPlaybackRateToggle() {
     if(video.playbackRate < parseFloat(playbackRateControls.max)){
         video.playbackRate += parseFloat(playbackRateControls.step);
         playbackRateToggle.innerHTML = `${video.playbackRate}x`;
-        
+        playbackRateControls.value = `${video.playbackRate}`
     }
 
     if(video.playbackRate === parseFloat(playbackRateControls.max)) {
