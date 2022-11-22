@@ -19,7 +19,7 @@ body {
 }
 
 .player {
-  max-width: max-content;
+  flex: auto;
   border: 5px solid rgba(0,0,0,0.2);
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
   position: relative;
@@ -98,10 +98,9 @@ body {
 }
 
 .progress__filled {
-  width: 50%;
   background: #ffc600;
   flex: 0;
-  flex-basis: 50%;
+  transition: width 5s ease-in-out;
 }
 
 /* unholy css to style input type="range" */
