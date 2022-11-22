@@ -14,7 +14,7 @@ let originX = 0
 window.addEventListener('load', handlePageLoad);
 
 video.addEventListener('click', handleClickPlay);
-video.addEventListener('timeupdate', updateDuration);
+video.addEventListener('timeupdate', updateProgressBar);
 playButton.addEventListener('click', handleClickPlay);
 rewindButton.addEventListener('click', handleRewind);
 fastforwardButton.addEventListener('click', handleFastforward);
@@ -29,8 +29,8 @@ progress.addEventListener('mousedown', handleMouseDownProgress);
 // window.addEventListener('mouseup', handleMouseUp)
 // window.addEventListener('mousemove', handleMouseMove)
 
-function updateDuration() {
-    let percentage = parseFloat(this.currentTime) / this.duration
+function updateProgressBar() {
+    let percentage = Math.ceil((parseFloat(this.currentTime) / this.duration) * 1000)
     console.log(percentage); 
 }
 
