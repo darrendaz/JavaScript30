@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Scoped CSS Variables and JS</title>
-    <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="../style.css">
-  </head>
-  <body>
-    <div class="horizontal-flex-container">
-      <div class="vertical-flex-container">
-        <h2>Updating CSS Variables with <span class='hl'>JS</span></h2>
-          <div class="controls">
-            <label for="spacing">Spacing:</label>
-            <br />
-            <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-units="px">
-            <br />
-            <label for="blur">Blur:</label>
-            <br />
-            <input id="blur" type="range" name="blur" min="0" max="25" value="0" data-units="px">
-            <br />
-            <label for="primary-light">Primary Color</label>
-            <br />
-            <input id="primary-light" type="color" name="primary-light" value="#64b38b">
-            <pre class="hexfield" id="primary"></pre>
-            <br />
-            <label for="secondary-light">Secondary Color</label>
-            <br />
-            <input  id="secondary-light" type="color" name="secondary-light" value="#ffffff">
-            <pre class="hexfield" id="secondary"></pre>
-          </div>
-      </div>
+  	<head>
+		<meta charset="UTF-8">
+		<title>Scoped CSS Variables and JS</title>
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="../style.css">
+  	</head>
+	<body>
+		<div class="horizontal-flex-container">
+		<div class="vertical-flex-container">
+			<h2>Updating CSS Variables with <span class='hl'>JS</span></h2>
+			<div class="controls">
+				<label for="spacing">Spacing:</label>
+				<br />
+				<input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-units="px">
+				<br />
+				<label for="blur">Blur:</label>
+				<br />
+				<input id="blur" type="range" name="blur" min="0" max="25" value="0" data-units="px">
+				<br />
+				<label for="primary-light">Primary Color</label>
+				<br />
+				<input id="primary-light" type="color" name="primary-light" value="#64b38b">
+				<pre class="hexfield" id="primary"></pre>
+				<br />
+				<label for="secondary-light">Secondary Color</label>
+				<br />
+				<input  id="secondary-light" type="color" name="secondary-light" value="#ffffff">
+				<pre class="hexfield" id="secondary"></pre>
+			</div>
+		</div>
 
-      <img class="hero" src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+		<img class="hero" src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
-    </div>
+		</div>
 
-    <script src="index.js"></script>
-  </body>
+		<script src="index.js"></script>
+	</body>
 </html>
