@@ -17,7 +17,7 @@ function shadow(e) {
 
   text.style.textShadow = `
     ${xWalk}px ${yWalk * -1}px 0 rgba(255,0,255,0.7),
-    ${xWalk * -1}px ${yWalk}px 0 rgba(255,0,255,0.7),
+    ${xWalk * -1}px ${yWalk}px 0 rgba(200,100,200,0.7),
     ${yWalk}px ${xWalk * -1}px 0 rgba(0,255,0,0.7),
     ${yWalk * -1}px ${xWalk}px 0 rgba(0,255,255,0.7)
   `;
