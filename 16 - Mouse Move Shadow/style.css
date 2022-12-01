@@ -1,3 +1,9 @@
+*,
+*:focus,
+*:hover {
+  outline: none;
+}
+
 html {
   color: black;
   font-family: sans-serif;
