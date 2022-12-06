@@ -14,18 +14,18 @@ const bands = [
   'An Old Dog',
 ];
 
-function alphabetize(bands) {
-  const output = normalizeArrayOfStrings(bands).sort((a, b) =>
-    a > b ? 1 : -1
+function alphabetize(arrayOfStrings) {
+  const output = arrayOfStrings.sort((a, b) =>
+    normalizeString(a) > normalizeString(b) ? 1 : -1
   );
 
-  console.log(output);
+  return output;
 }
 
-function normalizeArrayOfStrings(bands) {
-  return bands.map((band) =>
-    band.toLowerCase().replace(/^([aA]\s|[aA]n\s|[tT]he\s|)/, '')
-  );
+function normalizeString(string) {
+  return string.replace(/^(a |an |the )/i, '');
 }
 
-window.addEventListener('load', alphabetize(bands));
+document.querySelector('#bands').innerHTML = alphabetize(bands)
+  .map((bandName) => `<li>${bandName}</li>`)
+  .join('');
