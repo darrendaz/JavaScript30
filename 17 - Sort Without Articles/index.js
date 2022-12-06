@@ -15,13 +15,9 @@ const bands = [
 ];
 
 function alphabetize(bands) {
-  const output = normalizeArrayOfStrings(bands).sort((a, b) => {
-    if (a > b) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
+  const output = normalizeArrayOfStrings(bands).sort((a, b) =>
+    a > b ? 1 : -1
+  );
 
   console.log(output);
 }
