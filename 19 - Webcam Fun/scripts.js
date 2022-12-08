@@ -14,6 +14,9 @@ function getVideo() {
       debugger;
       video.srcObject = localMediaStream;
       video.play();
+    })
+    .catch((err) => {
+      console.error(`Something went wrong...`, err);
     });
 }
 
