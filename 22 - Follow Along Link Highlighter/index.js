@@ -10,8 +10,8 @@ function highlightLink() {
   const coords = {
     width: linkCoords.width,
     height: linkCoords.height,
-    top: linkCoords.top - window.scrollY,
-    left: linkCoords.left - window.scrollX,
+    top: linkCoords.top + window.scrollY,
+    left: linkCoords.left + window.scrollX,
   };
   highlight.style.width = `${coords.width}px`;
   highlight.style.height = `${coords.height}px`;

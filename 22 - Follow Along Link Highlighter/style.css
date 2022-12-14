@@ -50,7 +50,7 @@ a {
 }
 
 .highlight {
-  transition: all 0.1s;
+  transition: all 0.15s;
   border-bottom: 2px solid white;
   position: absolute;
   top: 0;
