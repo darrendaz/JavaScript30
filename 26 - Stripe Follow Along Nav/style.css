@@ -44,7 +44,7 @@ nav {
   perspective: 600px;
 }
 
-.cool > li > a {
+.top-nav > li > a {
   color: yellow;
   text-decoration: none;
   font-size: 20px;
@@ -63,7 +63,7 @@ nav ul {
   justify-content: center;
 }
 
-.cool > li {
+.top-nav > li {
   position: relative;
   display: flex;
   justify-content: center;
@@ -91,14 +91,14 @@ nav ul {
 }
 
 .dropdownBackground {
-  width: 100px;
-  height: 100px;
+  width: fit-content;
+  height: fit-content;
   position: absolute;
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 50px 100px rgba(50, 50, 93, 0.1),
     0 15px 35px rgba(50, 50, 93, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s, opacity 0.1s, transform 0.2s;
+  transition: all 0.1s, opacity 0.1s, transform 0.2s;
   transform-origin: 50% 0;
   display: flex;
   justify-content: center;
@@ -119,7 +119,7 @@ nav ul {
 }
 
 .bio {
-  min-width: 500px;
+  min-width: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
